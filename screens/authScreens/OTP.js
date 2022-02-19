@@ -25,8 +25,8 @@ const OTP = ({ navigation }) => {
                 style={styles.backgroundImg}
                 source={require('../../assets/images/login_back.png')} />
 
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image source={require("../../assets/icons/back_btn.png")} style={{ width: 80, height: 80, resizeMode: 'contain' }} />
+            <TouchableOpacity onPress={() => navigation.goBack()} style={{ margin: 12 }}>
+                <Image source={require("../../assets/icons/back_btn.png")} style={{ width: 64, height: 64, resizeMode: 'cover' }} />
             </TouchableOpacity>
 
             <View style={{ alignItems: 'center', justifyContent: 'center', marginHorizontal: 32 }}>

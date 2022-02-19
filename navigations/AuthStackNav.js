@@ -9,6 +9,7 @@ import Language from '../screens/authScreens/Language';
 import OTP from '../screens/authScreens/OTP';
 import Topics from '../screens/authScreens/Topics';
 import Influencers from '../screens/authScreens/Influencers';
+import MainStackNav from './MainStackNav';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -59,6 +60,10 @@ const AuthStackNav = ({ navigation }) => {
             <AuthStack.Screen
                 name="Influencers"
                 component={Influencers}
+            />
+               <AuthStack.Screen
+                name="MainStackNav"
+                component={MainStackNav}
             />
         </AuthStack.Navigator>
     );

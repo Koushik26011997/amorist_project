@@ -1,19 +1,19 @@
 import { StyleSheet, Image, View, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { Rtext } from '../../components/Rtext';
-import { InfluencerData, KP, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utility';
+import { InfluencerData, SCREEN_WIDTH } from '../../utility';
 
 const Influencers = ({ navigation }) => {
 
     return (
-        <View style={{ flex: 1, borderColor: 'red' }}>
-            <ScrollView>
+        <View style={{ flex: 1 }}>
+           
                 <Image
                     style={styles.backgroundImg}
                     source={require('../../assets/images/login_back.png')} />
-
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={require("../../assets/icons/back_btn.png")} style={{ width: 80, height: 80, resizeMode: 'contain' }} />
+ <ScrollView>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ margin: 12 }}>
+                    <Image source={require("../../assets/icons/back_btn.png")} style={{ width: 64, height: 64, resizeMode: 'cover' }} />
                 </TouchableOpacity>
 
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginHorizontal: 64, marginBottom: 16 }}>
