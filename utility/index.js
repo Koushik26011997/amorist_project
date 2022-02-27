@@ -407,3 +407,108 @@ export const PostList = [
     postShares: '6'
   }
 ]
+
+
+
+export const PostListSearch = [
+  {
+    userId: 1,
+    userName: 'Michelle Ogilvy',
+    userImage: require("../assets/images/avatar11.png"),
+    postTime: '1h ago',
+    postContentText: '',
+    isImages: false,
+    postContentImages: require("../assets/images/post4.png"),
+    postLikes: '18.6k',
+    postComments: '4.7k',
+    postShares: '12.4k'
+  },
+  {
+    userId: 2,
+    userName: 'Brandon Loia',
+    userImage: require("../assets/images/avatar12.png"),
+    postTime: '1h ago',
+    postContentText: '',
+    isImages: true,
+    postContentImages: require("../assets/images/post5.png"),
+    postLikes: '4,762',
+    postComments: '186',
+    postShares: '2,891'
+  },
+  {
+    userId: 3,
+    userName: 'Tony Monta',
+    userImage: require("../assets/images/avatar11.png"),
+    postTime: '1h ago',
+    isImages: false,
+    postContentText: '',
+    postContentImages: require("../assets/images/post4.png"),
+    postLikes: '14',
+    postComments: '',
+    postShares: ''
+  }
+]
+
+
+export const MessagesList = [
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Jessica Thompson',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar7.png"),
+    userName: 'Kat Williams',
+    message: 'OMG! OMG! OMG!',
+    last_msg_time: '5h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar6.png"),
+    userName: 'Jacob Washington',
+    message: 'Sure. Sunday works for me!',
+    last_msg_time: '20/9/21'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Leslie Alexander',
+    message: 'Sent you an invite for next monday.',
+    last_msg_time: '19/9/21'
+  },
+  {
+    userImage: require("../assets/images/avatar8.png"),
+    userName: 'Tony Monta',
+    message: 'How’s Alicia doing? Ask her to give m...',
+    last_msg_time: '19/9/21'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Tony Monta',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Tony Monta',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Jessica Thompson',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Jessica Thompson',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  },
+  {
+    userImage: require("../assets/images/avatar9.png"),
+    userName: 'Jonathon Starc',
+    message: 'Hey you! Are u there?',
+    last_msg_time: '4h ago'
+  }
+]

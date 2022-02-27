@@ -21,7 +21,7 @@ const OnBoarding_3 = ({navigation}) => {
                         </Rtext>
                     </View>
 
-                    <TouchableOpacity style={{ backgroundColor: '#296EFF', paddingHorizontal: 38, paddingVertical: 16, margin: 16, borderRadius: 32 }} onPress={()=> navigation.replace("MainStackNav")}>
+                    <TouchableOpacity style={{ backgroundColor: '#296EFF', paddingHorizontal: 38, paddingVertical: 16, margin: 16, borderRadius: 32 }} onPress={()=> navigation.navigate("SignIn")}>
 
                         <Rtext color='#fff'>Continue</Rtext>
 

@@ -45,7 +45,7 @@ const Language = ({ navigation }) => {
                         return renderItemList(item, index);
                     }} />
 
-                <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: SCREEN_WIDTH - 64, alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate("Topics")}>
+                <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: SCREEN_WIDTH - 64, alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.replace("MainStackNav")}>
                     <Rtext color='#fff'>CONTINUE</Rtext>
                 </TouchableOpacity>
             </View>

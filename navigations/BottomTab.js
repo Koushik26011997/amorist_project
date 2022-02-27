@@ -7,6 +7,9 @@ import Menu from '../screens/mainScreens/Menu';
 import Post from '../screens/mainScreens/Post';
 import Search from '../screens/mainScreens/Search';
 import { normalizeSize } from '../utility';
+import Messages from '../screens/mainScreens/Messages';
+import Alerts from '../screens/mainScreens/Alerts';
+import Points from '../screens/mainScreens/Points';
 
 const Tab = createBottomTabNavigator();
 
@@ -114,7 +117,7 @@ const BottomTab = props => {
 
       <Tab.Screen
         name="Menu"
-        component={Menu}
+        component={Messages}
         options={{
           tabBarIcon: ({ color, focused, size }) => (
             <Image

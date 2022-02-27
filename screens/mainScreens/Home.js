@@ -22,7 +22,7 @@ const Home = (props) => {
 
                             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#EFEFEF', borderRadius: 16, width: '70%', height: 42, elevation: 6 }}>
                                 <Image source={require("../../assets/icons/amorist_icon.png")} style={{ width: 24, height: 24, resizeMode: 'contain', marginLeft: 12 }} />
-                                <TextInput placeholder='amorist' style={{ width: SCREEN_WIDTH / 2 }} />
+                                <TextInput placeholder='amorist' style={{ width: SCREEN_WIDTH / 2, fontFamily: 'Montserrat-Regular' }} />
                             </View>
 
                             <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }}>
