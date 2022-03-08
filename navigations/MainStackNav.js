@@ -22,11 +22,13 @@ const MainStackNav = ({ navigation }) => {
                 name="BottomTab"
                 component={BottomTab}
             />
-             <MainStack.Screen
+
+            <MainStack.Screen
                 name="Alerts"
                 component={Alerts}
             />
-             <MainStack.Screen
+
+            <MainStack.Screen
                 name="Points"
                 component={Points}
             />

@@ -96,7 +96,6 @@ const Followers = () => {
             position: 'absolute',
           }}
           source={require('../../assets/images/background.png')}
-
         />
         <View style={{ padding: 24 }}>
           <Rtext fontWeight='bold' fontSize={15}>Following</Rtext>

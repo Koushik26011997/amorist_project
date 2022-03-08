@@ -203,28 +203,34 @@ export const KP = [
   }
 ]
 
-export const InfluencerData = [
+export const PostStories = [
   {
     title: "Top in Entertainment",
     content: [
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story1.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story2.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story3.png"),
         isChecked: false
-      }
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/story1.png"),
+        isChecked: false
+      },
     ]
   },
   {
@@ -233,21 +239,27 @@ export const InfluencerData = [
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story1.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story2.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story3.png"),
         isChecked: false
-      }
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/story1.png"),
+        isChecked: false
+      },
     ]
   },
   {
@@ -256,21 +268,27 @@ export const InfluencerData = [
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story1.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story2.png"),
         isChecked: false
       },
       {
         name: "Gloria",
         followers: "2,450 Followers",
-        image: require("../assets/images/avatar1.png"),
+        image: require("../assets/images/story3.png"),
         isChecked: false
-      }
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/story1.png"),
+        isChecked: false
+      },
     ]
   }
 ]
@@ -510,5 +528,84 @@ export const MessagesList = [
     userName: 'Jonathon Starc',
     message: 'Hey you! Are u there?',
     last_msg_time: '4h ago'
+  }
+]
+
+
+export const ProfilePostList = [
+  {
+    userId: 1,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postContentText: 'Going on vacation! Catch you all in 10 days. No call!!!!!',
+    isImages: false,
+    postContentImages: [],
+    postLikes: '261',
+    postComments: '12',
+    postShares: ''
+  },
+  {
+    userId: 2,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '4d ago',
+    postContentText: '',
+    isImages: true,
+    postContentImages: ['require("../assets/images/post6.png")'],
+    postLikes: '5,391',
+    postComments: '12',
+    postShares: ''
+  }
+]
+
+export const ProfileAppreciationsList = [
+  {
+    userId: 1,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
+  },
+  {
+    userId: 2,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
+  },
+  {
+    userId: 3,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
+  },
+  {
+    userId: 4,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
+  },
+  {
+    userId: 5,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
+  },
+  {
+    userId: 6,
+    userName: 'Alex Tsimikas',
+    userImage: require("../assets/images/avatar13.png"),
+    postTime: '3d ago',
+    postLikes: '261',
+    postContentText: 'Will show a certificate here.',
   }
 ]
