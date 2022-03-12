@@ -70,9 +70,8 @@ const Alerts = (props) => {
                         resizeMode: 'cover',
                         position: 'absolute',
                     }}
-                    source={require('../../assets/images/background.png')}
+                    source={require('../../assets/images/background.png')} />
 
-                />
                 <View style={{ padding: 24, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Rtext fontWeight='bold' fontSize={15}>Alerts</Rtext>
 

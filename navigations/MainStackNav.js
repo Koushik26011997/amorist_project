@@ -7,6 +7,8 @@ import BottomTab from './BottomTab';
 import Messages from '../screens/mainScreens/Messages';
 import Alerts from '../screens/mainScreens/Alerts';
 import Points from '../screens/mainScreens/Points';
+import Profile from '../screens/mainScreens/Profile';
+import Chat from '../screens/mainScreens/Chat';
 
 const MainStack = createNativeStackNavigator();
 
@@ -31,6 +33,16 @@ const MainStackNav = ({ navigation }) => {
             <MainStack.Screen
                 name="Points"
                 component={Points}
+            />
+
+            <MainStack.Screen
+                name="Profile"
+                component={Profile}
+            />
+
+            <MainStack.Screen
+                name="Chat"
+                component={Chat}
             />
         </MainStack.Navigator>
     )

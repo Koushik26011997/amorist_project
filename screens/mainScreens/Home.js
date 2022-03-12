@@ -25,7 +25,7 @@ const Home = (props) => {
                                 <TextInput placeholder='amorist' style={{ width: SCREEN_WIDTH / 2, fontFamily: 'Montserrat-Regular' }} />
                             </View>
 
-                            <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }}>
+                            <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }} onPress={() => props.navigation.navigate("Profile")}>
                                 <Image source={require("../../assets/images/avatar1.png")} style={{ height: 80, width: 50, resizeMode: 'contain' }} />
                             </TouchableOpacity>
 

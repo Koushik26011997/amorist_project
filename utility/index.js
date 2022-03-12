@@ -293,6 +293,97 @@ export const PostStories = [
   }
 ]
 
+
+export const InfluencerData = [
+  {
+    title: "Top in Entertainment",
+    content: [
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+    ]
+  },
+  {
+    title: "Top in Entertainment",
+    content: [
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+    ]
+  },
+  {
+    title: "Top in Entertainment",
+    content: [
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+      {
+        name: "Gloria",
+        followers: "2,450 Followers",
+        image: require("../assets/images/avatar1.png"),
+        isChecked: false
+      },
+    ]
+  }
+]
+
 export const Story = [require("../assets/images/avatar2.png"), require("../assets/images/avatar3.png"), require("../assets/images/avatar4.png"), require("../assets/images/avatar5.png"), require("../assets/images/avatar1.png"), require("../assets/images/avatar2.png"), require("../assets/images/avatar3.png"), require("../assets/images/avatar4.png"), require("../assets/images/avatar5.png"), require("../assets/images/avatar1.png"), require("../assets/images/avatar2.png"), require("../assets/images/avatar3.png"), require("../assets/images/avatar4.png"), require("../assets/images/avatar5.png"), require("../assets/images/avatar1.png")]
 
 export const OnBoarding_1_Quote = "As a writer or reader, Amorist gives you the opportunity to post short stories, poetry, shayari, blogs, erotica, articles, and quotes with millions of people. If you love literature or want to express your feelings, Amorist supports you."

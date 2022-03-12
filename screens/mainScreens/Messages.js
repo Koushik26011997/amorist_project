@@ -13,7 +13,7 @@ const Messages = ({ navigation }) => {
 
     const renderItemList = (item, index) => {
         return (
-            <TouchableOpacity key={index.toString()} style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 24 }}>
+            <TouchableOpacity key={index.toString()} style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 24 }} onPress={()=> navigation.navigate("Chat")}>
 
                 <View style={{ flexDirection: 'row', width: '80%' }}>
                     <Image source={item.userImage} style={{ height: 36, width: 36, resizeMode: 'contain' }} />
@@ -44,7 +44,7 @@ const Messages = ({ navigation }) => {
                     imageStyle={{ width: '100%', height: "100%", opacity: 0.3 }}
                     source={require('../../assets/images/home_back.png')}>
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 24 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 12 }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <Image source={require("../../assets/icons/black_btn.png")} style={{ width: 46, height: 46, resizeMode: 'contain' }} />
                         </TouchableOpacity>

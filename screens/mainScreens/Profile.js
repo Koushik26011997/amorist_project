@@ -88,34 +88,35 @@ const Profile = (props) => {
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
             <ScrollView>
-
-                <ImageBackground source={require("../../assets/images/profile_back.png")} imageStyle={{ height: SCREEN_HEIGHT / 4, width: SCREEN_WIDTH, resizeMode: 'contain' }}>
+                <ImageBackground source={require("../../assets/images/profile_back_1.png")} imageStyle={{ height: SCREEN_HEIGHT / 6, width: SCREEN_WIDTH, resizeMode: 'cover' }}>
 
                     <View style={{
                         alignItems: 'center',
                         justifyContent: 'center',
-                        height: 124, width: 124, borderRadius: 64,
+                        height: 144, width: 144, borderRadius: 72,
                         borderWidth: 12, borderColor: '#2E8AF7',
                         alignSelf: 'center',
-                        marginTop: 64
+                        // marginTop: 100
+                        marginTop: (SCREEN_HEIGHT / 6) / 2
                     }}>
-                        <Image source={require("../../assets/images/profile_pic.png")} style={{ height: 120, width: 120, borderRadius: 60, borderWidth: 4, borderColor: '#1A171B' }} />
-
+                        <Image source={require("../../assets/images/profile_pic.png")} style={{ height: 140, width: 140, borderRadius: 70, borderWidth: 4, borderColor: '#1A171B' }} />
                     </View>
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', position: 'absolute', width: '96%', alignSelf: 'center', bottom: 8 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', position: 'absolute', width: '96%', alignSelf: 'center', bottom: 24 }}>
                         <TouchableOpacity style={{
-                            paddingHorizontal: 16, borderWidth: 1, borderColor: '#1A171B',
+                            paddingHorizontal: 12, borderWidth: 1, borderColor: '#1A171B',
                             borderRadius: 24, paddingVertical: 6, alignItems: 'center', justifyContent: 'center',
-                            width: 100
+                            // width: 100
+                            width: SCREEN_WIDTH / 3.5
                         }}>
-                            <Rtext fontSize={13}>2.7 points</Rtext>
+                            <Rtext fontSize={13} numberOfLines={1}>2.7 points</Rtext>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={{
-                            paddingHorizontal: 16, borderWidth: 1, borderColor: '#1A171B',
+                            paddingHorizontal: 12, borderWidth: 1, borderColor: '#1A171B',
                             borderRadius: 24, paddingVertical: 6, alignItems: 'center', justifyContent: 'center',
-                            width: 100
+                            // width: 100
+                            width: SCREEN_WIDTH / 3.5
                         }}>
                             <Rtext fontSize={13} fontWeight='bold'>Support</Rtext>
                         </TouchableOpacity>
@@ -210,8 +211,10 @@ const Profile = (props) => {
                     renderItem={({ item, index }) => {
                         return (
                             <TouchableOpacity style={{
-                                width: SCREEN_WIDTH / 4, borderBottomColor: index === pos ? '#2E8AF7' : '',
-                                borderBottomWidth: index === pos ? 4 : 0, borderRadius: 3, alignItems: 'center',
+                                width: SCREEN_WIDTH / 4,
+                                borderBottomColor: index === pos ? '#2E8AF7' : '',
+                                borderBottomWidth: index === pos ? 4 : 0, borderRadius: 3,
+                                alignItems: 'center',
                                 justifyContent: 'center', marginHorizontal: 6, marginTop: 6, paddingBottom: 12
                             }}
                                 onPress={() => setPos(index)}>

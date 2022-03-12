@@ -7,11 +7,11 @@ const Influencers = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-           
-                <Image
-                    style={styles.backgroundImg}
-                    source={require('../../assets/images/login_back.png')} />
- <ScrollView>
+
+            <Image
+                style={styles.backgroundImg}
+                source={require('../../assets/images/login_back.png')} />
+            <ScrollView>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ margin: 12 }}>
                     <Image source={require("../../assets/icons/back_btn.png")} style={{ width: 64, height: 64, resizeMode: 'cover' }} />
                 </TouchableOpacity>

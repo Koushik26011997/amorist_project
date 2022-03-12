@@ -10,6 +10,8 @@ import RootDrawerNav from './navigations/RootDrawerNav';
 import * as Animatable from 'react-native-animatable';
 import Messages from './screens/mainScreens/Messages';
 import Profile from './screens/mainScreens/Profile';
+import CreatePost from './screens/mainScreens/CreatePost';
+import Chat from './screens/mainScreens/Chat';
 
 //https://www.figma.com/file/tdnoD2ulD1aGUBgnv97TAz/Amorist-UI-ABCD?node-id=0%3A1
 
@@ -29,14 +31,16 @@ const App = () => {
     <PaperProvider>
       <NavigationContainer>
         <StatusBar translucent={true} backgroundColor="#0C1C46" hidden={true} />
-        {/* {
+        {
           isShowSplashScreen ? <SplashComponent /> : <AuthStackNav />
-        } */}
-        <Profile />
+        }
+        {/* <Profile /> */}
+        {/* <CreatePost /> */}
+        {/* <Chat /> */}
       </NavigationContainer>
     </PaperProvider>
   );
-}; 
+};
 
 const SplashComponent = () => {
   return (

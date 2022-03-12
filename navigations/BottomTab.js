@@ -10,21 +10,20 @@ import { normalizeSize } from '../utility';
 import Messages from '../screens/mainScreens/Messages';
 import Alerts from '../screens/mainScreens/Alerts';
 import Points from '../screens/mainScreens/Points';
+import CreatePost from '../screens/mainScreens/CreatePost';
 
 const Tab = createBottomTabNavigator();
 
 const TAB_BAR_ICON_SIZE = 22;
 
-const BottomTab = props => {
+const BottomTab = (props) => {
 
   const CustomTabBarButton = ({ children, onPress }) => {
-    return (
-      <TouchableOpacity onPress={onPress} style={{ top: -36, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ width: 60, height: 60, borderRadius: 30 }}>
-          {children}
-        </View>
-      </TouchableOpacity>
-    )
+    return <TouchableOpacity onPress={onPress} style={{ top: -(normalizeSize(56, 42, 54) / 2), justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ width: 60, height: 60, borderRadius: 30 }}>
+        {children}
+      </View>
+    </TouchableOpacity>
   }
 
   return (
@@ -75,11 +74,11 @@ const BottomTab = props => {
       />
 
       <Tab.Screen
-        name="Post"
-        component={Post}
+        name="CreatePost"
+        component={CreatePost}
         options={{
           tabBarIcon: ({ color, focused, size }) => (
-            <TouchableOpacity style={{ backgroundColor: '#fff', padding: 5, borderRadius: 19, borderWidth: 4, borderColor: '#344AE0' }}>
+            <View style={{ backgroundColor: '#fff', padding: 5, borderRadius: 19, borderWidth: 4, borderColor: '#344AE0' }}>
               <Image
                 style={{
                   height: 30,
@@ -89,7 +88,7 @@ const BottomTab = props => {
                 }}
                 source={require('../assets/icons/plus.png')}
               />
-            </TouchableOpacity>
+            </View>
           ),
           tabBarButton: (props) => {
             return <CustomTabBarButton {...props} />
