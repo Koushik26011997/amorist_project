@@ -35,13 +35,8 @@ const App = () => {
       <NavigationContainer>
         <StatusBar translucent={true} backgroundColor="#0C1C46" hidden={true} />
         {
-          isShowSplashScreen ? <SplashComponent /> : <AuthStackNav />
+          isShowSplashScreen ? <SplashComponent /> : <RootDrawerNav />
         }
-        {/* <Profile /> */}
-        {/* <CreatePost /> */}
-        {/* <Chat /> */}
-        {/* <ExploreUsers /> */}
-        {/* <FullImageShow/> */}
       </NavigationContainer>
     </PaperProvider>
   );

@@ -279,8 +279,7 @@ const Chat = (props) => {
                     <Rtext color='#000000'>Jessica Thompson</Rtext>
                 </View>
 
-                {/* <TouchableOpacity onPress={() => props.navigation.navigate("Points")}> */}
-                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
+                <TouchableOpacity onPress={() => props.navigation.navigate("Points")}>
                     <Image source={require("../../assets/icons/settings.png")} style={{ width: 46, height: 46, resizeMode: 'contain' }} />
                 </TouchableOpacity>
             </View>

@@ -10,9 +10,9 @@ const RootDrawerNav = (props) => {
 
   return (
     <Drawer.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, drawerPosition: 'left' }}
+      defaultStatus="closed"
       initialRouteName="Root"
-      drawerPosition="right"
       drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Root" component={MainStackNav} />
     </Drawer.Navigator>

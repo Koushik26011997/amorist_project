@@ -74,7 +74,7 @@ const Home = (props) => {
                             </View>
 
                             {/* <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }} onPress={() => props.navigation.navigate("Profile", { "IsEdit": true })}> */}
-                            <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }} onPress={() => props.navigation?.openDrawer()}>
+                            <TouchableOpacity style={{ width: '100%', marginHorizontal: 16 }} onPress={() => props.navigation.openDrawer()}>
                                 <Image source={require("../../assets/images/avatar1.png")} style={{ height: 80, width: 50, resizeMode: 'contain' }} />
                             </TouchableOpacity>
 
