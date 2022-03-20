@@ -6,7 +6,7 @@ import CustomDrawerContent from './CustomDrawerContent';
 
 const Drawer = createDrawerNavigator();
 
-const RootDrawerNav = () => {
+const RootDrawerNav = (props) => {
 
   return (
     <Drawer.Navigator

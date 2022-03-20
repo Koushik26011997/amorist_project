@@ -26,6 +26,7 @@
     "react-native-render-html": "^6.3.4",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.11.1",
+    "react-native-stories-view": "^1.0.9",
     "react-native-tab-view": "^3.1.1",
     "react-native-tabbed-view-pager-android": "^1.0.4",
     "react-native-vector-icons": "^9.1.0"

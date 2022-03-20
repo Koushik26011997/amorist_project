@@ -11,6 +11,7 @@ import Messages from '../screens/mainScreens/Messages';
 import Alerts from '../screens/mainScreens/Alerts';
 import Points from '../screens/mainScreens/Points';
 import CreatePost from '../screens/mainScreens/CreatePost';
+import { DrawerActions } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -117,6 +118,12 @@ const BottomTab = (props) => {
       <Tab.Screen
         name="Menu"
         component={Messages}
+        // listeners={({ navigation }) => ({
+        //   tabPress: e => {
+        //     // navigation.dispatch(DrawerActions.openDrawer())
+        //    console.log("navigation", navigation);
+        //   }
+        // })}
         options={{
           tabBarIcon: ({ color, focused, size }) => (
             <Image

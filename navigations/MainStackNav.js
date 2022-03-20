@@ -9,6 +9,8 @@ import Alerts from '../screens/mainScreens/Alerts';
 import Points from '../screens/mainScreens/Points';
 import Profile from '../screens/mainScreens/Profile';
 import Chat from '../screens/mainScreens/Chat';
+import FullImageShow from '../screens/mainScreens/FullImageShow';
+import ExploreUsers from '../screens/mainScreens/ExploreUsers';
 
 const MainStack = createNativeStackNavigator();
 
@@ -43,6 +45,16 @@ const MainStackNav = ({ navigation }) => {
             <MainStack.Screen
                 name="Chat"
                 component={Chat}
+            />
+
+            <MainStack.Screen
+                name="FullImageShow"
+                component={FullImageShow}
+            />
+
+            <MainStack.Screen
+                name="ExploreUsers"
+                component={ExploreUsers}
             />
         </MainStack.Navigator>
     )

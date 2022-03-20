@@ -29,7 +29,9 @@ const CreatePost = (props) => {
                 source={require('../../assets/images/post_bg.png')}>
 
                 <View style={{ flexDirection: "row", alignItems: 'center', paddingTop: 12, paddingHorizontal: 12 }}>
+
                     <Image source={require("../../assets/images/avatar1.png")} style={{ height: 32, width: 32, resizeMode: 'contain', marginRight: 8 }} />
+
                     {/* <Rtext color='#727477'>What’s on your mind?</Rtext> */}
                     <TextInput placeholder='What’s on your mind?' placeholderTextColor={'#727477'} style={{ fontFamily: 'Montserrat-Regular', fontSize: normalizeSize(15), width: SCREEN_WIDTH - 60 }} />
                 </View>

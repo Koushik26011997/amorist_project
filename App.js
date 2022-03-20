@@ -12,6 +12,9 @@ import Messages from './screens/mainScreens/Messages';
 import Profile from './screens/mainScreens/Profile';
 import CreatePost from './screens/mainScreens/CreatePost';
 import Chat from './screens/mainScreens/Chat';
+import ExploreUsers from './screens/mainScreens/ExploreUsers';
+import Home from './screens/mainScreens/Home';
+import FullImageShow from './screens/mainScreens/FullImageShow';
 
 //https://www.figma.com/file/tdnoD2ulD1aGUBgnv97TAz/Amorist-UI-ABCD?node-id=0%3A1
 
@@ -37,6 +40,8 @@ const App = () => {
         {/* <Profile /> */}
         {/* <CreatePost /> */}
         {/* <Chat /> */}
+        {/* <ExploreUsers /> */}
+        {/* <FullImageShow/> */}
       </NavigationContainer>
     </PaperProvider>
   );

@@ -15,6 +15,10 @@ import ProfileLiked from './ProfileLiked';
 
 const Profile = (props) => {
 
+    const IsEdit = props.route.params?.IsEdit || false;
+    const UserImage = props.route.params?.UserImage || require("../../assets/images/profile_pic.png");
+    const UserName = props.route.params?.UserName || "Alex Tsimikas";
+
     const [pos, setPos] = useState(0);
     const TAB_ARR = ["Posts", "Stories", "Saved", "Appreciations"];
 
@@ -99,7 +103,7 @@ const Profile = (props) => {
                         // marginTop: 100
                         marginTop: (SCREEN_HEIGHT / 6) / 2
                     }}>
-                        <Image source={require("../../assets/images/profile_pic.png")} style={{ height: 140, width: 140, borderRadius: 70, borderWidth: 4, borderColor: '#1A171B' }} />
+                        <Image source={UserImage} style={{ height: 140, width: 140, borderRadius: 70, borderWidth: 4, borderColor: '#1A171B' }} />
                     </View>
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', position: 'absolute', width: '96%', alignSelf: 'center', bottom: 24 }}>
@@ -118,7 +122,7 @@ const Profile = (props) => {
                             // width: 100
                             width: SCREEN_WIDTH / 3.5
                         }}>
-                            <Rtext fontSize={13} fontWeight='bold'>Support</Rtext>
+                            <Rtext fontSize={13} fontWeight='bold'>{IsEdit ? "Edit Profile" : "Support"}</Rtext>
                         </TouchableOpacity>
                     </View>
 
@@ -126,7 +130,7 @@ const Profile = (props) => {
 
 
                 <View style={{ alignItems: 'center', padding: 12, marginTop: 8 }}>
-                    <Rtext style={{ marginTop: 6 }} fontSize={15}>Alex Tsimikas</Rtext>
+                    <Rtext style={{ marginTop: 6 }} fontSize={15}>{UserName}</Rtext>
                     <Rtext style={{ marginTop: 6 }} fontSize={13}>Brooklyn, NY</Rtext>
                     <Rtext style={{ marginTop: 6 }}>Writer by Profession. Artist by Passion!</Rtext>
                 </View>

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { PostList, PostListSearch, SCREEN_WIDTH } from '../../utility'
 import { Rtext } from '../../components/Rtext'
 
-const Search = () => {
+const Search = (props) => {
 
   const SearchTags = [
     {
@@ -71,10 +71,7 @@ const Search = () => {
                       borderWidth: item.isSelected ? 0 : 1,
                       borderColor: "#414141"
                     }} key={index.toString()}
-
-                    // onPress={() => handleData(index)}
-
-                    >
+                      onPress={() => props.navigation.navigate("ExploreUsers")}>
                       <Rtext color={item.isSelected ? '#fff' : "#414141"} fontSize={11} fontWeight={item.isSelected ? 'bold' : "normal"}>{item.name}</Rtext>
                     </TouchableOpacity>
                   )
@@ -89,13 +86,13 @@ const Search = () => {
                 return (
                   <View key={index1.toString()} style={{ padding: 16 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 6 }}>
-                      <View style={{ flexDirection: 'row' }}>
+                      <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => props.navigation.navigate("Profile", { "IsEdit": false, "UserImage": item.userImage, "UserName": item.userName })}>
                         <Image source={item.userImage} style={{ height: 36, width: 36, resizeMode: 'contain' }} />
                         <View style={{ paddingLeft: 6 }}>
                           <Rtext fontWeight='bold'>{item.userName}</Rtext>
                           <Rtext fontSize={12}>{item.postTime}</Rtext>
                         </View>
-                      </View>
+                      </TouchableOpacity>
 
                       <TouchableOpacity style={{ padding: 6 }}>
                         <Image source={require("../../assets/icons/dot.png")} style={{ height: 16, width: 16, resizeMode: 'contain' }} />
@@ -103,32 +100,9 @@ const Search = () => {
 
                     </View>
 
-                    <View style={{ alignItems: 'flex-start' }}>
-
-                      {/* {item.postContentText != "" && <Rtext style={{ lineHeight: 24 }}>{item.postContentText}</Rtext>} */}
-
-                      {/* {
-                        <FlatList
-                          data={item.postContentImages}
-                          horizontal
-                          showsHorizontalScrollIndicator={false}
-                          keyExtractor={(img, pos) => pos.toString()}
-                          showsVerticalScrollIndicator={false}
-                          renderItem={({ img, pos }) => {
-                            console.log("img", img);
-                            return (
-                              <View style={{ flex: 1, marginHorizontal: 6 }}>
-                                <Image source={img} style={{ height: 180, width: SCREEN_WIDTH - 68, resizeMode: 'contain' }} />
-                              </View>
-                            )
-                          }} />
-                      } */}
-
-                      <View style={{ flex: 1, marginHorizontal: 6 }}>
-                        <Image source={item.postContentImages} style={{ height: 200, width: SCREEN_WIDTH - 50, resizeMode: 'contain' }} />
-                      </View>
-
-                    </View>
+                    <TouchableOpacity style={{ flex: 1, marginHorizontal: 6 }} onPress={() => props.navigation.navigate("FullImageShow", { "image": item.postContentImages })}>
+                      <Image source={item.postContentImages} style={{ height: 200, width: SCREEN_WIDTH - 32, resizeMode: 'contain' }} />
+                    </TouchableOpacity>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center' }}>

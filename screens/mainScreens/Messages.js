@@ -2,8 +2,15 @@ import { StyleSheet, View, Image, TouchableOpacity, TextInput, FlatList, ImageBa
 import React from 'react'
 import { Rtext } from '../../components/Rtext'
 import { MessagesList, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utility'
+import { DrawerActions, useNavigation } from '@react-navigation/native'
 
 const Messages = ({ navigation }) => {
+
+
+
+    const nav = useNavigation();
+
+    console.log("navigation", nav);
 
     const ItemSeparator = () => {
         return (
@@ -13,7 +20,7 @@ const Messages = ({ navigation }) => {
 
     const renderItemList = (item, index) => {
         return (
-            <TouchableOpacity key={index.toString()} style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 24 }} onPress={()=> navigation.navigate("Chat")}>
+            <TouchableOpacity key={index.toString()} style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 24 }} onPress={() => navigation.navigate("Chat")}>
 
                 <View style={{ flexDirection: 'row', width: '80%' }}>
                     <Image source={item.userImage} style={{ height: 36, width: 36, resizeMode: 'contain' }} />
@@ -48,8 +55,10 @@ const Messages = ({ navigation }) => {
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <Image source={require("../../assets/icons/black_btn.png")} style={{ width: 46, height: 46, resizeMode: 'contain' }} />
                         </TouchableOpacity>
+
                         <Rtext fontWeight='bold' style={{ letterSpacing: 2 }}>MESSAGES</Rtext>
-                        <TouchableOpacity onPress={()=> navigation.navigate("Points")}>
+
+                        <TouchableOpacity onPress={() => navigation.navigate("Points")}>
                             <Image source={require("../../assets/icons/settings.png")} style={{ width: 46, height: 46, resizeMode: 'contain' }} />
                         </TouchableOpacity>
                     </View>
