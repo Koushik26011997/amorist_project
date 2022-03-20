@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainStackNav from './MainStackNav';
 import CustomDrawerContent from './CustomDrawerContent';
+import { AuthStackNav } from './AuthStackNav';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,9 +13,10 @@ const RootDrawerNav = (props) => {
     <Drawer.Navigator
       screenOptions={{ headerShown: false, drawerPosition: 'left' }}
       defaultStatus="closed"
-      initialRouteName="Root"
+      initialRouteName="Root1"
       drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="Root" component={MainStackNav} />
+      <Drawer.Screen name="Root1" component={AuthStackNav} />
+      <Drawer.Screen name="Root2" component={MainStackNav} />
     </Drawer.Navigator>
 
   );
