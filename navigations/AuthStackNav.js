@@ -10,6 +10,7 @@ import OTP from '../screens/authScreens/OTP';
 import Topics from '../screens/authScreens/Topics';
 import Influencers from '../screens/authScreens/Influencers';
 import MainStackNav from './MainStackNav';
+import FlashMessage from 'react-native-flash-message';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -20,52 +21,52 @@ const AuthStackNav = ({ navigation }) => {
     };
 
     return (
-        <AuthStack.Navigator screenOptions={options} initialRouteName='OnBoarding_1'>
-            <AuthStack.Screen
-                name="OnBoarding_1"
-                component={OnBoarding_1}
-            // options={({ route }) => ({
-            //   stackAnimation: 'slide_from_bottom',
-            //   headerShown: false,
-            // })}
-            />
-            <AuthStack.Screen
-                name="OnBoarding_2"
-                component={OnBoarding_2}
-            />
-            <AuthStack.Screen
-                name="OnBoarding_3"
-                component={OnBoarding_3}
-            />
-            <AuthStack.Screen
-                name="SignIn"
-                component={SignIn}
-            />
-            <AuthStack.Screen
-                name="SignUp"
-                component={SignUp}
-            />
-            <AuthStack.Screen
-                name="OTP"
-                component={OTP}
-            />
-            <AuthStack.Screen
-                name="Language"
-                component={Language}
-            />
-            <AuthStack.Screen
-                name="Topics"
-                component={Topics}
-            />
-            <AuthStack.Screen
-                name="Influencers"
-                component={Influencers}
-            />
-               <AuthStack.Screen
-                name="MainStackNav"
-                component={MainStackNav}
-            />
-        </AuthStack.Navigator>
+        <>
+            <AuthStack.Navigator screenOptions={options} initialRouteName='OnBoarding_1'>
+                <AuthStack.Screen
+                    name="OnBoarding_1"
+                    component={OnBoarding_1}
+                />
+                <AuthStack.Screen
+                    name="OnBoarding_2"
+                    component={OnBoarding_2}
+                />
+                <AuthStack.Screen
+                    name="OnBoarding_3"
+                    component={OnBoarding_3}
+                />
+                <AuthStack.Screen
+                    name="SignIn"
+                    component={SignIn}
+                />
+                <AuthStack.Screen
+                    name="SignUp"
+                    component={SignUp}
+                />
+                <AuthStack.Screen
+                    name="OTP"
+                    component={OTP}
+                />
+                <AuthStack.Screen
+                    name="Language"
+                    component={Language}
+                />
+                <AuthStack.Screen
+                    name="Topics"
+                    component={Topics}
+                />
+                <AuthStack.Screen
+                    name="Influencers"
+                    component={Influencers}
+                />
+                <AuthStack.Screen
+                    name="MainStackNav"
+                    component={MainStackNav}
+                />
+            </AuthStack.Navigator>
+            <FlashMessage position="top" />
+        </>
+
     );
 };
 

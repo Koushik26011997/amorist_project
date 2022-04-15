@@ -1,21 +1,119 @@
 import { ScrollView, StyleSheet, ImageBackground, View, TouchableOpacity, Image, TextInput } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Rtext } from '../../components/Rtext'
 import { Checkbox } from 'react-native-paper';
 import { Rmodal } from '../../components/Rmodal';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ainput } from '../../components/Ainput';
-import { SCREEN_HEIGHT } from '../../utility';
+import { SCREEN_HEIGHT, showFlashMessage } from '../../utility';
+
+import * as yup from 'yup';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { guestUserLogin, guestUserOTP } from '../../store/auth';
+import Spinner from 'react-native-loading-spinner-overlay';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = ({ navigation }) => {
+
+    const dispatch = useDispatch();
+
     const [checked, setChecked] = React.useState(false);
 
     const [showModal, setShowModal] = React.useState(false);
 
     const [phoneNumber, setPhoneNumber] = React.useState("");
 
+    const loader = useSelector((state) => state.auth.loading);
+
+    const logicSchema = yup.object().shape({
+        email: yup.string().required('Email ID can\'t be left blank').email(),
+        password: yup
+            .string()
+            .required('Password can\'t be left blank')
+            .min(6, 'Password must contain atleast 6 characters'),
+    });
+
+    const { control, handleSubmit, errors, setValue } = useForm({
+        resolver: yupResolver(logicSchema),
+        defaultValues: { email: '', password: '' },
+    });
+
+    const submitLogin = async data => {
+        const device_token = await AsyncStorage.getItem('device_token');
+        const app_api_key = await AsyncStorage.getItem('app_api_key');
+
+        dispatch(guestUserLogin({
+            email: data?.email,
+            password: data?.password,
+            device_token: device_token,
+            app_api_key: app_api_key
+        })).then((res) => {
+            if (res.payload) {
+                showFlashMessage(res.payload?.message, "", "success");
+                setTimeout(() => {
+                    navigation.navigate("Language");
+                    clearAllFields();
+                }, 2000);
+            } else {
+                console.log("res.data", res.error?.message);
+                showFlashMessage(res.error?.message, "", "danger");
+            }
+        });
+    }
+
+    const clearAllFields = () => {
+        setValue("email", "");
+        setValue("password", "");
+    }
+
+    const sendOTP = async () => {
+        const device_token = await AsyncStorage.getItem('device_token');
+        const app_api_key = await AsyncStorage.getItem('app_api_key');
+
+        if (phoneNumber.length != 10) {
+            showFlashMessage("Invalid phone number given", "", "danger");
+            return;
+        } else {
+            dispatch(guestUserOTP({
+                mobile_no: phoneNumber,
+                device_token: device_token,
+                app_api_key: app_api_key
+            })).then((res) => {
+                console.log("res.payload", res.payload);
+                if (res.payload.success === true) {
+                    setShowModal(false);
+                    setPhoneNumber("");
+                    showFlashMessage("Your OTP is: " + res.payload.data, "", "success");
+                    navigation.navigate("OTP");
+                } else {
+                    showFlashMessage(res.payload?.message, "", "danger");
+                }
+            });
+        }
+    }
+
+    useEffect(() => {
+
+        let errorMessage = '';
+
+        for (const [key, value] of Object.entries(errors)) {
+            errorMessage += value.message;
+            break;
+        }
+
+        if (errorMessage != '') showFlashMessage(errorMessage, '', 'danger');
+
+        return function cleanup() {
+            errorMessage = '';
+        };
+    }, [errors]);
+
+
     return (
         <View>
+            <Spinner visible={loader} />
             <Image
                 style={styles.backgroundImg}
                 source={require('../../assets/images/login_back.png')} />
@@ -31,14 +129,45 @@ const SignIn = ({ navigation }) => {
 
                     <Rtext color='#fff' fontWeight='400' fontSize={12} style={{ margin: 3 }}>LOG IN WITH EMAIL</Rtext>
 
-                    <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 32 }}
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <Ainput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 16 }}
+                                autoCapitalize="none"
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                                placeholder='Email address'
+                                placeholderTextColor={"#A1A4B2"}
+                            />
+                        )}
+                        name="email"
+                    />
+
+                    <Controller
+                        control={control}
+                        render={({ onChange, onBlur, value }) => (
+                            <Ainput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 16 }}
+                                autoCapitalize="none"
+                                onBlur={onBlur}
+                                onChangeText={value => onChange(value)}
+                                value={value}
+                                placeholder='Password'
+                                placeholderTextColor={"#A1A4B2"}
+                                view={true}
+                            />
+                        )}
+                        name="password"
+                    />
+
+                    {/* <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 32 }}
                         placeholder='Email address'
                         keyboardType='email-address'
-                        placeholderTextColor={"#A1A4B2"} />
+                        placeholderTextColor={"#A1A4B2"} /> */}
 
-                    <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 16 }}
+                    {/* <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 16 }}
                         placeholder='Password'
-                        placeholderTextColor={"#A1A4B2"} />
+                        placeholderTextColor={"#A1A4B2"} /> */}
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', margin: 16 }}>
                         <Rtext color='#fff' fontSize={13} fontWeight='400'>Remember me</Rtext>
@@ -69,7 +198,7 @@ const SignIn = ({ navigation }) => {
 
                     <Rtext color='#fff' style={{ margin: 16 }} fontWeight='bold' fontSize={12} onPress={() => navigation.navigate("OTP")}>Forgot Password?</Rtext>
 
-                    <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: '100%', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate("Topics")}>
+                    <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: '100%', alignItems: 'center', justifyContent: 'center' }} onPress={handleSubmit(submitLogin)}>
                         <Rtext color='#fff'>LOG IN</Rtext>
                     </TouchableOpacity>
 
@@ -108,7 +237,8 @@ const SignIn = ({ navigation }) => {
                 </Rtext>
 
                 <Ainput
-                    style={{ marginVertical: 32 }}
+                    maxLength={10}
+                    style={{ backgroundColor: '#fff', borderRadius: 8, width: '100%', fontFamily: 'MontserratRegular', marginVertical: 32, padding: 12 }}
                     placeholder="Phone number"
                     value={phoneNumber}
                     type="number-pad"
@@ -117,7 +247,7 @@ const SignIn = ({ navigation }) => {
                 />
 
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <TouchableOpacity style={{ backgroundColor: '#fff', padding: 16, borderRadius: 32, width: '90%', alignItems: 'center', justifyContent: 'center', marginVertical: 16 }} onPress={() => (setShowModal(false), navigation.navigate("OTP"))}>
+                    <TouchableOpacity style={{ backgroundColor: '#fff', padding: 16, borderRadius: 32, width: '90%', alignItems: 'center', justifyContent: 'center', marginVertical: 16 }} onPress={() => sendOTP()}>
                         <Rtext color='#296EFF' fontSize={13}>CONTINUE</Rtext>
                     </TouchableOpacity>
                 </View>

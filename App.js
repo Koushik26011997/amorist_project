@@ -15,6 +15,8 @@ import Chat from './screens/mainScreens/Chat';
 import ExploreUsers from './screens/mainScreens/ExploreUsers';
 import Home from './screens/mainScreens/Home';
 import FullImageShow from './screens/mainScreens/FullImageShow';
+import store from './store';
+import { Provider, useSelector } from 'react-redux';
 
 //https://www.figma.com/file/tdnoD2ulD1aGUBgnv97TAz/Amorist-UI-ABCD?node-id=0%3A1
 
@@ -31,16 +33,23 @@ const App = () => {
   }, []);
 
   return (
-    <PaperProvider>
-      <NavigationContainer>
-        <StatusBar translucent={true} backgroundColor="#0C1C46" hidden={true} />
-        {
-          isShowSplashScreen ? <SplashComponent /> : <RootDrawerNav />
-        }
-      </NavigationContainer>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider>
+        <NavigationContainer>
+          <StatusBar translucent={true} backgroundColor="#0C1C46" hidden={true} />
+          {
+            isShowSplashScreen ? <SplashComponent /> : <AuthStackNav />
+          }
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   );
 };
+
+const MainNav = () => {
+  const user = useSelector((state) => state.auth.user);
+  return user ? <RootDrawerNav /> : <AuthStackNav />;
+}
 
 const SplashComponent = () => {
   return (

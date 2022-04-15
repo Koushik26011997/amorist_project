@@ -1,8 +1,11 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
+import { showMessage } from 'react-native-flash-message';
 
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export const ANIMATION_TIME = 2000;
+
+export const baseUrl = "http://amo.esolveinfotech.com/webservices/";
 
 // based on iphone 5s's scale
 const scale = SCREEN_WIDTH / 320;
@@ -19,6 +22,14 @@ export const normalizeSize = (size, lgSize = 0, smSize = 0) => {
   }
 };
 
+export const showFlashMessage = (message = '', description = '', type = 'info') => {
+  showMessage({
+    message: message,
+    description: description,
+    type: type,
+    duration: 2000,
+  });
+};
 
 export const KP = [
   {
