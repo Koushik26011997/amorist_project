@@ -2,12 +2,42 @@ import { StyleSheet, Image, View, TouchableOpacity, FlatList, ScrollView } from 
 import React, { useState } from 'react'
 import { Rtext } from '../../components/Rtext';
 import { KP, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utility';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { guestUserTopicList } from '../../store/auth';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const Topics = ({ navigation }) => {
 
+    const dispatch = useDispatch();
+
+    const topicList = useSelector((state) => state.auth.topicList);
+    const loader = useSelector((state) => state.auth.loading);
+    const user = useSelector((state) => state.auth.user);
+
+    useEffect(() => {
+        getTopicList();
+    }, []);
+
+    const getTopicList = async () => {
+        const device_token = await AsyncStorage.getItem('device_token');
+        const app_api_key = await AsyncStorage.getItem('app_api_key');
+
+        dispatch(guestUserTopicList({
+            device_token: device_token,
+            app_api_key: app_api_key,
+            // user_id: user?.userId,
+            user_id: 24
+        }));
+    }
+
+    console.log('topicList', topicList);
+
     return (
         <View style={{ flex: 1 }}>
-
+            <Spinner visible={loader} />
             <Image
                 style={styles.backgroundImg}
                 source={require('../../assets/images/login_back.png')} />

@@ -10,12 +10,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Language = ({ navigation }) => {
 
+    // navigation.replace("MainStackNav");
     const dispatch = useDispatch();
 
     const languages = useSelector((state) => state.auth.languagesList);
     const loader = useSelector((state) => state.auth.loading);
     const user = useSelector((state) => state.auth.user);
 
+    console.log("languages", languages);
     const [pos, setPos] = useState(0);
 
     console.log("pos", pos);
@@ -74,7 +76,7 @@ const Language = ({ navigation }) => {
                         return renderItemList(item, index);
                     }} />
 
-                <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: SCREEN_WIDTH - 64, alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.replace("MainStackNav")}>
+                <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 20, borderRadius: 32, width: SCREEN_WIDTH - 64, alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate("Topics")}>
                     <Rtext color='#fff'>CONTINUE</Rtext>
                 </TouchableOpacity>
             </View>
@@ -84,7 +86,7 @@ const Language = ({ navigation }) => {
     )
 }
 
-export default Language
+export default Language;
 
 const styles = StyleSheet.create({
     backgroundImg: {

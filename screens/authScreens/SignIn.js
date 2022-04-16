@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { guestUserLogin, guestUserOTP } from '../../store/auth';
 import Spinner from 'react-native-loading-spinner-overlay';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SignIn = ({ navigation }) => {
 
@@ -44,23 +45,31 @@ const SignIn = ({ navigation }) => {
         const device_token = await AsyncStorage.getItem('device_token');
         const app_api_key = await AsyncStorage.getItem('app_api_key');
 
-        dispatch(guestUserLogin({
-            email: data?.email,
-            password: data?.password,
-            device_token: device_token,
-            app_api_key: app_api_key
-        })).then((res) => {
-            if (res.payload) {
-                showFlashMessage(res.payload?.message, "", "success");
-                setTimeout(() => {
-                    navigation.navigate("Language");
-                    clearAllFields();
-                }, 2000);
-            } else {
-                console.log("res.data", res.error?.message);
-                showFlashMessage(res.error?.message, "", "danger");
-            }
-        });
+        try {
+            dispatch(guestUserLogin({
+                email: data?.email,
+                password: data?.password,
+                device_token: device_token,
+                app_api_key: app_api_key
+            })).then((res) => {
+                console.log("res.payload", res.payload);
+                if (res.payload?.success == true) {
+                    showFlashMessage(res.payload?.message, "", "success");
+                    setTimeout(() => {
+                        navigation.navigate("Language");
+                        clearAllFields();
+                    }, 2000);
+                } else if ((res.payload?.success == false)) {
+                    // console.log("res.data", res.payload?.message);
+                    showFlashMessage(res.payload?.message, "", "danger");
+                }
+                // else {
+                //     showFlashMessage("Unauthorised", "", "danger");
+                // }
+            });
+        } catch (error) {
+            console.log("error", error.response);
+        }
     }
 
     const clearAllFields = () => {
@@ -112,7 +121,7 @@ const SignIn = ({ navigation }) => {
 
 
     return (
-        <View>
+        <SafeAreaView>
             <Spinner visible={loader} />
             <Image
                 style={styles.backgroundImg}
@@ -298,7 +307,7 @@ const SignIn = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </Rmodal> */}
-        </View>
+        </SafeAreaView>
     )
 }
 

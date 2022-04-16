@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { request } from '../service/common';
 import { showFlashMessage } from '../utility';
+import { showMessage } from 'react-native-flash-message';
 
 const guestUserLogin = createAsyncThunk(
   'guestUserLogin',
@@ -49,12 +50,33 @@ const guestUserLanguages = createAsyncThunk(
   },
 );
 
+const guestUserTopicList = createAsyncThunk(
+  'guestUserTopicList',
+  async (data, thunkAPI) => {
+    console.log('guestUserTopicList', data);
+    const response = await request('post', "api/interest_topics", data);
+    return response.data;
+  },
+);
+
+const guestUserInfluencersList = createAsyncThunk(
+  'guestUserInfluencersList',
+  async (data, thunkAPI) => {
+    console.log('guestUserInfluencersList', data);
+    const response = await request('post', "api/follow_influencers", data);
+    return response.data;
+  },
+);
+
+
 const loginSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
     loading: false,
     languagesList: [],
+    topicList: [],
+    influencerList: [],
   },
 
   reducers: {
@@ -69,7 +91,7 @@ const loginSlice = createSlice({
     [guestUserLogin.fulfilled]: (state, action) => {
       console.log("action.payload.data", action);
       state.user = new UserDetails(action.payload.data);
-      AsyncStorage.setItem('token', action.payload.data.token);
+      AsyncStorage.setItem('token', action.payload.data.token || '');
       state.loading = false;
     },
 
@@ -78,6 +100,8 @@ const loginSlice = createSlice({
     },
 
     [guestUserLogin.rejected]: (state, action) => {
+      console.log("action", action.error.message);
+      showFlashMessage(action.error.message, "", "danger");
       state.user = null;
       state.loading = false;
     },
@@ -129,7 +153,7 @@ const loginSlice = createSlice({
     },
     //
     [guestUserLanguages.fulfilled]: (state, action) => {
-      console.log("languagesList", action.payload.data);
+      console.log("guestUserLanguages.fulfilled", action);
       state.languagesList = action.payload.data;
       state.loading = false;
     },
@@ -139,12 +163,41 @@ const loginSlice = createSlice({
     },
 
     [guestUserLanguages.rejected]: (state, action) => {
+      console.log("guestUserLanguages.rejected", action);
       state.languagesList = [];
+      state.loading = false;
+    },
+    //
+    [guestUserTopicList.fulfilled]: (state, action) => {
+      state.topicList = action.payload.data;
+      state.loading = false;
+    },
+
+    [guestUserTopicList.pending]: (state, action) => {
+      state.loading = true;
+    },
+
+    [guestUserTopicList.rejected]: (state, action) => {
+      state.topicList = [];
+      state.loading = false;
+    },
+    //
+    [guestUserInfluencersList.fulfilled]: (state, action) => {
+      state.influencerList = action.payload.data;
+      state.loading = false;
+    },
+
+    [guestUserInfluencersList.pending]: (state, action) => {
+      state.loading = true;
+    },
+
+    [guestUserInfluencersList.rejected]: (state, action) => {
+      state.influencerList = [];
       state.loading = false;
     },
   },
 });
 
 export const { } = loginSlice.actions;
-export { guestUserLogin, guestUserRegister, guestUserLogout, guestUserOTP, guestUserLanguages };
+export { guestUserLogin, guestUserRegister, guestUserLogout, guestUserOTP, guestUserLanguages, guestUserTopicList, guestUserInfluencersList };
 export default loginSlice.reducer;

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, ImageBackground, View, TouchableOpacity, Image, TextInput, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, StyleSheet, ImageBackground, View, TouchableOpacity, Image, TextInput, Text, KeyboardAvoidingView, Linking } from 'react-native'
 import React, { useEffect } from 'react'
 import { Rtext } from '../../components/Rtext'
 import { Checkbox } from 'react-native-paper'
@@ -65,7 +65,8 @@ const SignUp = ({ navigation }) => {
                 if (res.payload) {
                     showFlashMessage(res.payload?.message, "", "success");
                     setTimeout(() => {
-                        navigation.navigate("Language");
+                        // navigation.navigate("Language");
+                        navigation.navigate("SignIn");
                         clearAllFields();
                     }, 2000);
                 } else {

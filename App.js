@@ -17,6 +17,8 @@ import Home from './screens/mainScreens/Home';
 import FullImageShow from './screens/mainScreens/FullImageShow';
 import store from './store';
 import { Provider, useSelector } from 'react-redux';
+import Topics from './screens/authScreens/Topics';
+import Influencers from './screens/authScreens/Influencers';
 
 //https://www.figma.com/file/tdnoD2ulD1aGUBgnv97TAz/Amorist-UI-ABCD?node-id=0%3A1
 
