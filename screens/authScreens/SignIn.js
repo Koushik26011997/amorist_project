@@ -42,6 +42,15 @@ const SignIn = ({ navigation }) => {
     });
 
     const submitLogin = async data => {
+
+        if (checked) {
+            await AsyncStorage.setItem('email', data?.email || '');
+            await AsyncStorage.setItem('password', data?.password || '');
+        } else {
+            await AsyncStorage.removeItem('email');
+            await AsyncStorage.removeItem('password');
+        }
+
         const device_token = await AsyncStorage.getItem('device_token');
         const app_api_key = await AsyncStorage.getItem('app_api_key');
 
@@ -119,6 +128,17 @@ const SignIn = ({ navigation }) => {
         };
     }, [errors]);
 
+    useEffect(() => { getRememberValues() }, []);
+
+    const getRememberValues = async () => {
+        const email = await AsyncStorage.getItem('email');
+        const password = await AsyncStorage.getItem('password');
+        setValue("email", email || '');
+        setValue("password", password || '');
+        if (email && password) {
+            setChecked(true);
+        }
+    }
 
     return (
         <SafeAreaView>
@@ -168,15 +188,6 @@ const SignIn = ({ navigation }) => {
                         )}
                         name="password"
                     />
-
-                    {/* <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 32 }}
-                        placeholder='Email address'
-                        keyboardType='email-address'
-                        placeholderTextColor={"#A1A4B2"} /> */}
-
-                    {/* <TextInput style={{ backgroundColor: '#fff', padding: 16, borderRadius: 16, width: '100%', fontFamily: 'MontserratRegular', marginTop: 16 }}
-                        placeholder='Password'
-                        placeholderTextColor={"#A1A4B2"} /> */}
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', margin: 16 }}>
                         <Rtext color='#fff' fontSize={13} fontWeight='400'>Remember me</Rtext>
@@ -261,52 +272,7 @@ const SignIn = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </Rmodal>
-            {/* <Rmodal visible={showModal} onCancel={() => setShowModal(false)}>
 
-                <Rtext
-                    fontWeight='bold'
-                    fontSize={16}
-                    style={{ textAlign: 'center' }}>
-                    Enter Phone number
-                </Rtext>
-
-                <TouchableOpacity
-                    style={{ position: 'absolute', right: 8, top: 8 }}
-                    onPress={() => setShowModal(false)}>
-
-                    <MaterialCommunityIcons name={'close-circle'} size={32} color={"#296EFF"} />
-
-                </TouchableOpacity>
-
-
-                <View
-                    style={{
-                        backgroundColor: 'gray',
-                        height: 1,
-                        marginVertical: 6,
-                    }} />
-
-                <Rtext
-                    style={{ textAlign: 'center', marginTop: 8, marginStart: 16 }}
-                    color={"gray"}>
-                    An OTP will be sent to your Phone
-                </Rtext>
-
-                <Ainput
-                    style={{ marginVertical: 16 }}
-                    placeholder="Phone number"
-                    value={phoneNumber}
-                    type="number-pad"
-                    border={"#296EFF"}
-                    onChangeText={text => setPhoneNumber(text)}
-                />
-
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <TouchableOpacity style={{ backgroundColor: '#296EFF', padding: 16, borderRadius: 32, width: '90%', alignItems: 'center', justifyContent: 'center', marginVertical: 16 }} onPress={() => (setShowModal(false), navigation.navigate("OTP"))}>
-                        <Rtext color='#fff'>CONTINUE</Rtext>
-                    </TouchableOpacity>
-                </View>
-            </Rmodal> */}
         </SafeAreaView>
     )
 }

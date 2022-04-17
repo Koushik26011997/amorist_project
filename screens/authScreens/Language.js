@@ -16,23 +16,17 @@ const Language = ({ navigation }) => {
     const languages = useSelector((state) => state.auth.languagesList);
     const loader = useSelector((state) => state.auth.loading);
     const user = useSelector((state) => state.auth.user);
-
-    console.log("languages", languages);
     const [pos, setPos] = useState(0);
-
-    console.log("pos", pos);
 
     const renderItemList = (item, index) => {
         return (
             <TouchableOpacity
                 key={index.toString()}
                 onPress={() => setPos(index)}
-                // style={{ backgroundColor: "#fff", padding: 24, margin: 6, borderRadius: 12, opacity: pos === index ? 1 : 0.6 }}
-                style={{ backgroundColor: pos === index ? "#fffff" : '#f1f1f1', padding: 24, margin: 6, borderRadius: 12 }}
-            >
-                <View style={{ paddingLeft: 16 }}>
-                    <Rtext color='#3F414E'>{item?.language}</Rtext>
-                </View>
+                style={{ backgroundColor: index === pos ? "#fff" : "gray", padding: 24, margin: 6, borderRadius: 12 }}>
+
+                <Rtext color='#3F414E'>{item?.language}</Rtext>
+
             </TouchableOpacity>
         );
     };
