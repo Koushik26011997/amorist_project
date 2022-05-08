@@ -89,9 +89,10 @@ const loginSlice = createSlice({
 
   extraReducers: {
     [guestUserLogin.fulfilled]: (state, action) => {
-      console.log("action.payload.data", action);
-      state.user = new UserDetails(action.payload.data);
-      AsyncStorage.setItem('token', action.payload.data.token || '');
+      if (action.payload?.success === true) {
+        state.user = new UserDetails(action.payload.data);
+        AsyncStorage.setItem('token', action.payload.data.token || '');
+      }
       state.loading = false;
     },
 
@@ -100,7 +101,7 @@ const loginSlice = createSlice({
     },
 
     [guestUserLogin.rejected]: (state, action) => {
-      console.log("action", action.error.message);
+      console.log("action", action.e);
       showFlashMessage(action.error.message, "", "danger");
       state.user = null;
       state.loading = false;

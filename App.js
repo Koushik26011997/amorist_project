@@ -20,6 +20,8 @@ import { Provider, useSelector } from 'react-redux';
 import Topics from './screens/authScreens/Topics';
 import Influencers from './screens/authScreens/Influencers';
 import Language from './screens/authScreens/Language';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import FlashMessage from 'react-native-flash-message';
 
 //https://www.figma.com/file/tdnoD2ulD1aGUBgnv97TAz/Amorist-UI-ABCD?node-id=0%3A1
 
@@ -38,12 +40,15 @@ const App = () => {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <NavigationContainer>
-          <StatusBar translucent={true} backgroundColor="#0C1C46" hidden={true} />
-          {
-            isShowSplashScreen ? <SplashComponent /> : <AuthStackNav />
-          }
-        </NavigationContainer>
+        <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }}>
+          <NavigationContainer>
+            <StatusBar translucent={true} backgroundColor="#0C1C46" />
+            {
+              isShowSplashScreen ? <SplashComponent /> : <MainNav />
+            }
+          </NavigationContainer>
+          <FlashMessage position="top" />
+        </SafeAreaView>
       </PaperProvider>
     </Provider>
   );
@@ -51,12 +56,13 @@ const App = () => {
 
 const MainNav = () => {
   const user = useSelector((state) => state.auth.user);
-  return user ? <RootDrawerNav /> : <AuthStackNav />;
+  console.log("***user***", user);
+  return user?.token ? <RootDrawerNav /> : <AuthStackNav />;
 }
 
 const SplashComponent = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Image source={require("./assets/images/login_back.png")} style={{
         width: '100%',
         height: '100%',
@@ -77,7 +83,7 @@ const SplashComponent = () => {
         }} />
       </Animatable.View>
       <Rtext color='#fff' fontSize={12} style={{ margin: 6 }}>Where words bind the world!</Rtext>
-    </View>
+    </SafeAreaView>
   )
 }
 

@@ -64,7 +64,6 @@ const AuthStackNav = ({ navigation }) => {
                     component={MainStackNav}
                 />
             </AuthStack.Navigator>
-            <FlashMessage position="top" />
         </>
 
     );

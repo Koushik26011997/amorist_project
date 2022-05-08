@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, ImageBackground, View, TouchableOpacity, Image, TextInput } from 'react-native'
+import { ScrollView, StyleSheet, ImageBackground, View, TouchableOpacity, Image, TextInput, StatusBar } from 'react-native'
 import React, { useEffect } from 'react'
 import { Rtext } from '../../components/Rtext'
 import { Checkbox } from 'react-native-paper';
@@ -29,7 +29,7 @@ const SignIn = ({ navigation }) => {
     const loader = useSelector((state) => state.auth.loading);
 
     const logicSchema = yup.object().shape({
-        email: yup.string().required('Email ID can\'t be left blank').email(),
+        email: yup.string().required('Email ID can\'t be left blank').email("Invalid Email ID Given"),
         password: yup
             .string()
             .required('Password can\'t be left blank')
@@ -61,7 +61,7 @@ const SignIn = ({ navigation }) => {
                 device_token: device_token,
                 app_api_key: app_api_key
             })).then((res) => {
-                console.log("res.payload", res.payload);
+                console.log("res", res.payload);
                 if (res.payload?.success == true) {
                     showFlashMessage(res.payload?.message, "", "success");
                     setTimeout(() => {
@@ -69,12 +69,11 @@ const SignIn = ({ navigation }) => {
                         clearAllFields();
                     }, 2000);
                 } else if ((res.payload?.success == false)) {
-                    // console.log("res.data", res.payload?.message);
                     showFlashMessage(res.payload?.message, "", "danger");
                 }
-                // else {
-                //     showFlashMessage("Unauthorised", "", "danger");
-                // }
+                else {
+                    showFlashMessage("Something went wrong. Please try again later", "", "danger");
+                }
             });
         } catch (error) {
             console.log("error", error.response);
@@ -141,7 +140,7 @@ const SignIn = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
             <Spinner visible={loader} />
             <Image
                 style={styles.backgroundImg}
